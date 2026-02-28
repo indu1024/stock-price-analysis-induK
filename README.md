@@ -1,0 +1,62 @@
+# Stock Price Analysis and Visualization (Python)
+
+Analyze stocks like `AAPL`, `MSFT`, `TSLA` using historical market data and generate:
+- Candlestick charts
+- Moving averages (20/50)
+- Bollinger Bands (20, 2-sigma)
+- Rolling volatility
+- Correlation matrix + heatmap
+- Trend and risk summary report
+
+## Features
+- Data source options:
+  - `yfinance` (default)
+  - `alphavantage` (requires API key)
+- Multi-asset correlation analysis
+- Per-asset trend classification (`uptrend/downtrend/sideways`)
+- CSV outputs + charts + markdown report
+
+## Install
+
+```bash
+cd /Users/indumathi/Documents/Playground/stock_price_analysis
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e '.[dev]'
+```
+
+## Run (Yahoo Finance)
+
+```bash
+stock-analyze \
+  --tickers AAPL,MSFT,TSLA \
+  --start 2022-01-01 \
+  --end 2025-12-31 \
+  --source yfinance \
+  --output-dir /Users/indumathi/Documents/Playground/stock_price_analysis/outputs
+```
+
+## Run (Alpha Vantage)
+
+```bash
+stock-analyze \
+  --tickers AAPL,MSFT,TSLA \
+  --start 2022-01-01 \
+  --source alphavantage \
+  --alphavantage-api-key YOUR_KEY \
+  --output-dir /Users/indumathi/Documents/Playground/stock_price_analysis/outputs
+```
+
+## Outputs
+Saved in `outputs/`:
+- `asset_summary.csv`
+- `asset_correlation.csv`
+- `analysis_report.md`
+- `<TICKER>_enriched_prices.csv`
+- `<TICKER>_candlestick.png`
+- `<TICKER>_rolling_volatility.png`
+- `asset_correlation_heatmap.png`
+
+## Notes
+- Alpha Vantage has strict rate limits on free keys.
+- If you only need one data source, use `--source yfinance` for simpler setup.
