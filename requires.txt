@@ -1,0 +1,10 @@
+numpy>=1.24
+pandas>=2.0
+matplotlib>=3.8
+seaborn>=0.13
+mplfinance>=0.12.10b0
+yfinance>=0.2.50
+requests>=2.31
+
+[dev]
+pytest>=8.0
